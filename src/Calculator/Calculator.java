@@ -15,7 +15,9 @@ import java.util.Scanner;
  Результатом операции деления является целое число, остаток отбрасывается.
  Результатом работы метода с арабскими числами могут быть отрицательные числа и ноль. Результатом работы метода с римскими числами могут быть только положительные числа, если результат работы меньше единицы, выбрасывается исключение
  */
-//
+/*
+* @author Va4
+* */
 
 public class Calculator {
     public static void main(String[] args) throws Exception {
@@ -48,9 +50,9 @@ class CalculatorHelper {
         }
 
         letter1 = getLetter(splitText[0]);
-         if (letter1 <= 0 || letter1 > 10){
-             throw new Exception("Arab letter should be > 0 or < then 10");
-         }
+        if (letter1 <= 0 || letter1 > 10){
+            throw new Exception("Arab letter should be > 0 or < then 10");
+        }
         letter2 = getLetter(splitText[2]);
         if (letter2 <= 0 || letter2 > 10){
             throw new Exception("Arab letter should be > 0 or < then 10");
@@ -172,7 +174,7 @@ class CalculatorHelper {
                 break;
 
             default:
-                throw new Exception("Wrong operation format");  
+                throw new Exception("Wrong operation format");
         }
 
         return result;
