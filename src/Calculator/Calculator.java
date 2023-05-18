@@ -1,6 +1,5 @@
 package Calculator;
 
-
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -18,6 +17,7 @@ import java.util.Scanner;
 /*
 * @author Va4
 * */
+    ////////////////////////////////////////////////////////////////
 
 public class Calculator {
     public static void main(String[] args) throws Exception {
