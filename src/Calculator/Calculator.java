@@ -16,8 +16,7 @@ import java.util.Scanner;
  */
 /*
 * @author Va4
-* */
-    ////////////////////////////////////////////////////////////////
+*/
 
 public class Calculator {
     public static void main(String[] args) throws Exception {
