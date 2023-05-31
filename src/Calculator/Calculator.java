@@ -32,7 +32,7 @@ public class Calculator {
 class CalculatorHelper {
     public String calc(String input) throws Exception {
         String[] splitText = input.split(" ");
-        Boolean rome = false;
+        boolean rome = false;
         int letter1, letter2;
 
         int countLetters = 0;
@@ -51,11 +51,11 @@ class CalculatorHelper {
 
         letter1 = getLetter(splitText[0]);
         if (letter1 <= 0 || letter1 > 10){
-            throw new Exception("Arab letter should be > 0 or < then 10");
+            throw new Exception("Arab/Rome letter should be > 0 or < then 10");
         }
         letter2 = getLetter(splitText[2]);
         if (letter2 <= 0 || letter2 > 10){
-            throw new Exception("Arab letter should be > 0 or < then 10");
+            throw new Exception("Arab/Rome letter should be > 0 or < then 10");
         }
         int result = getResult(letter1, letter2, splitText[1]);
         String output;
@@ -80,102 +80,68 @@ class CalculatorHelper {
         try {
             integer = Integer.parseInt(letter);
         } catch (Exception e) {
-            switch (letter.toLowerCase(Locale.ROOT)) {
-                case "i":
-                    integer = 1;
-                    break;
-                case "ii":
-                    integer = 2;
-                    break;
-                case "iii":
-                    integer = 3;
-                    break;
-                case "iv":
-                    integer = 4;
-                    break;
-                case "v":
-                    integer = 5;
-                    break;
-                case "vi":
-                    integer = 6;
-                    break;
-                case "vii":
-                    integer = 7;
-                    break;
-                case "viii":
-                    integer = 8;
-                    break;
-                case "ix":
-                    integer = 9;
-                    break;
-                case "x":
-                    integer = 10;
-                    break;
-                default:
-                    throw new Exception("Arab letter > 10");
-            }
+            integer = switch (letter.toLowerCase(Locale.ROOT)) {
+                case "i" -> 1;
+                case "ii" -> 2;
+                case "iii" -> 3;
+                case "iv" -> 4;
+                case "v" -> 5;
+                case "vi" -> 6;
+                case "vii" -> 7;
+                case "viii" -> 8;
+                case "ix" -> 9;
+                case "x" -> 10;
+                case "xi" -> 11;
+                case "xii" -> 12;
+                case "xiii" -> 13;
+                case "xiv" -> 14;
+                case "xv" -> 15;
+                case "xvi" -> 16;
+                case "xvii" -> 17;
+                case "xviii" -> 18;
+                case "xviv" -> 19;
+                case "xx" -> 20;
+                default -> throw new Exception("Arab letter > 10");
+            };
         }
         return integer;
     }
 
     public String getRomeNumber(int num) throws Exception {
-        String romeNum = null;
-        switch (num) {
-            case 1:
-                romeNum = "I";
-                break;
-            case 2:
-                romeNum = "II";
-                break;
-            case 3:
-                romeNum = "III";
-                break;
-            case 4:
-                romeNum = "IV";
-                break;
-            case 5:
-                romeNum = "V";
-                break;
-            case 6:
-                romeNum = "VI";
-                break;
-            case 7:
-                romeNum = "VII";
-                break;
-            case 8:
-                romeNum = "VIII";
-                break;
-            case 9:
-                romeNum = "IX";
-                break;
-            case 10:
-                romeNum = "X";
-                break;
-            default:
-                throw new Exception("The result > 10");
-        }
+        String romeNum = switch (num) {
+            case 1 -> "I";
+            case 2 -> "II";
+            case 3 -> "III";
+            case 4 -> "IV";
+            case 5 -> "V";
+            case 6 -> "VI";
+            case 7 -> "VII";
+            case 8 -> "VIII";
+            case 9 -> "IX";
+            case 10 -> "X";
+            case 11 -> "XI";
+            case 12 -> "XII";
+            case 13 -> "XIII";
+            case 14 -> "XIV";
+            case 15 -> "XV";
+            case 16 -> "XVI";
+            case 17 -> "XVII";
+            case 18 -> "XVIII";
+            case 19 -> "XVIV";
+            case 20 -> "XX";
+            default -> throw new Exception("The result > 10");
+        };
         return romeNum;
     }
 
-    public Integer getResult(int letter1, int letter2, String s) throws Exception {
-        int result = 0;
-        switch (s) {
-            case "/":
-                result = letter1 / letter2;
-                break;
-            case "+":
-                result = letter1 + letter2;
-                break;
-            case "-":
-                result = letter1 - letter2;
-                break;
-            case "*":
-                result = letter1 * letter2;
-                break;
-
-            default:
-                throw new Exception("Wrong operation format");
-        }
+    public Integer getResult(int letter1, int letter2, String s) throws Exception { 
+        int result = switch (s) {
+            case "/" -> letter1 / letter2;
+            case "+" -> letter1 + letter2;
+            case "-" -> letter1 - letter2;
+            case "*" -> letter1 * letter2;
+            default -> throw new Exception("Wrong operation format");
+        };
 
         return result;
     }
